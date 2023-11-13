@@ -5,16 +5,16 @@ public class Main {
     static int X, Y = 1;
     static Scanner scan = new Scanner(System.in);
     public static void controller() {
-        if (input == 'E') {
+        if (input == 'e') {
             Y++;
         }
-        else if (input == 'F') {
+        else if (input == 'f') {
             X++;
         }
-        else if (input == 'S') {
+        else if (input == 's') {
             X--;
         }
-        else if (input == 'D') {
+        else if (input == 's') {
             Y--;
         }
         else {
