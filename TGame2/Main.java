@@ -2,7 +2,8 @@ package TGame2;
 import java.util.Scanner;
 public class Main {
     static char input = '\0';
-    static int X, Y = 1;
+    static int X = 1;
+    static int Y = 1;
     static Scanner scan = new Scanner(System.in);
     public static void controller() {
         if (input == 'e') {
