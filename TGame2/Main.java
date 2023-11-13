@@ -121,7 +121,7 @@ public class Main {
             City.engine();
         }
         if (input == 'b') {
-            System.out.println("Поезда до моря пока не ездят, подождите до обновления v0.0.4");
+            System.out.println("Поезда до моря пока не ездят, подождите до обновления v0.1.1");
         }
     }
     public static void engine() {
