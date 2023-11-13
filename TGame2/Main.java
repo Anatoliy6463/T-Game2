@@ -8,8 +8,11 @@ public class Main {
     static int hp = 100;
     static int peaches = 0;
     static Scanner scan = new Scanner(System.in);
-    static int mech, armor, car = 0;
+    static int mech, armor = 0;
     static int money = 100;
+    static int dragonhp = 1000;
+    static boolean dragontame = false;
+    static boolean depressia = false;
     public static void main(String[] args) {
         System.out.println("Добро пожаловать в T-Game2! Чтобы начать игру, нажмите любую клавишу");
         input = scan.next().charAt(0);
@@ -19,7 +22,7 @@ public class Main {
         hp-=30;
     }
     public static void shop() {
-        System.out.println("Чтобы купить меч, нажмите w, чтобы купить броню, нажмите r, чтобы купить увеличитель, нажмите i");
+        System.out.println("Чтобы купить меч, нажмите w, чтобы купить броню, нажмите r, чтобы купить персики, нажмите r");
         input = scan.next().charAt(0);
         if (input == 'w') {
             money-=10;
@@ -29,16 +32,52 @@ public class Main {
             money-=10;
             armor = 1;
         }
-        if (input == 'i') {
-            money-=100;
-            hp = 0;
-            System.out.println("ХАХАХАХАХАХАХАХАХАХАХАХАХ");
+        if (input == 'a') {
+            peaches++;
+            money-=5;
         }
         return;
+    }
+    public static void sell() {
+        System.out.println("Сколько персиков вы хотите продать?");
+        int A = 0;
+        A = scan.nextInt();
+        
+        if (A > peaches) {
+            A = peaches;
+        }
+        money += 3 * A;
+        peaches-=A;
     }
     public static void peaches() {
         System.out.println("У вас " + peaches + "персиков");
         return;
+    }
+    public static void dragon() {
+        if (armor == 0) {
+            hp -= 5;
+        }
+        if (armor == 1) {
+            hp -= 2;
+        }
+        if (mech == 0 && input == 'k' && dragontame == false) {
+            dragonhp -= 4;
+        }
+        if (mech == 1 && input == 'k' && dragontame == false) {
+            dragonhp -= 10;
+        }
+        if (armor == 1 && input == 't' && peaches >= 10) {
+            dragonhp -= 15;
+            peaches -= 10;
+            dragontame = true;
+            System.out.println("Вы приручили дракона!");
+            money += 100;
+        }
+        if (dragonhp <= 0) {
+            System.out.println("Вы победили дракона!");
+            money += 50;
+            depressia = true;
+        }
     }
     public static void eat() {
         peaches--;
@@ -94,7 +133,20 @@ public class Main {
                 System.exit(0);
             }
             if (X == 19 && Y == 21) {
-                shop();
+                System.out.println("Чтобы что-то купить, нажмите H, чтобы что-то продать, нажмите L");
+                if (input == 'H') {
+                    shop();
+                }
+                if (input == 'L') {
+                    sell();
+                }
+            }
+            if (X >= 50 && X <= 69 && Y >= 59 && Y <= 69) {
+                dragon();
+            }
+            if (depressia == true) {
+                hp -= 20;
+                hunger += 20;
             }
         }
     }
