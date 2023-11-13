@@ -114,6 +114,16 @@ public class Main {
             hunger += 0.15;
         }
     }
+    public static void vokzal() {
+        System.out.println("Добро пожаловать на вокзал! Куда вы хотите поехать? Город = c, море = b");
+        if (input == 'c') {
+            money-=5;
+            City.engine();
+        }
+        if (input == 'b') {
+            System.out.println("Поезда до моря пока не ездят, подождите до обновления v0.0.4");
+        }
+    }
     public static void engine() {
         System.out.println("Загрузка...");
         while (input != 'q') {
@@ -143,6 +153,9 @@ public class Main {
             }
             if (X >= 50 && X <= 69 && Y >= 59 && Y <= 69) {
                 dragon();
+            }
+            if (X == 45 && Y == 20) {
+                vokzal();
             }
             if (depressia == true) {
                 hp -= 20;
